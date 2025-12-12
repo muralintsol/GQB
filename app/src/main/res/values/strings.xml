@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GURUKULA BOARD</string>
+    
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="pin">PIN (Birth Year)</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="enter_pin">Enter PIN (Birth Year)</string>
+    <string name="invalid_mobile_number">Invalid mobile number</string>
+    <string name="invalid_pin">PIN must be 4 digits</string>
+    <string name="login_failed">Login failed. Please check your credentials.</string>
+    
+    <!-- Question Bank -->
+    <string name="question_bank">Question Bank</string>
+    <string name="search_questions">Search questions...</string>
+    <string name="filter">Filter</string>
+    <string name="approve">Approve</string>
+    <string name="reject">Reject</string>
+    <string name="pending">Pending</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
+    
+    <!-- Scraping -->
+    <string name="scraping">Scraping</string>
+    <string name="scrape_ncert">Scrape NCERT</string>
+    <string name="scrape_karnataka">Scrape Karnataka PU</string>
+    
+    <!-- PDF -->
+    <string name="upload_pdf">Upload PDF</string>
+    <string name="extract_questions">Extract Questions</string>
+    
+    <!-- Paper Generator -->
+    <string name="generate_paper">Generate Paper</string>
+    <string name="preview">Preview</string>
+    <string name="export">Export</string>
+    <string name="print">Print</string>
+    
+    <!-- Admin -->
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="user_management">User Management</string>
+    <string name="create_user">Create User</string>
+    
+    <!-- Common -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+</resources>
+
