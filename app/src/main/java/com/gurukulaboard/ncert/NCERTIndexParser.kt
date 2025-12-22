@@ -7,8 +7,8 @@ import com.gurukulaboard.ncert.models.NCERTTopic
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor
-import kotlin.math.maxOf
-import kotlin.math.minOf
+import kotlin.math.max
+import kotlin.math.min
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -41,7 +41,7 @@ class NCERTIndexParser @Inject constructor() {
             val pdfDoc = PdfDocument(reader)
             
             // Look for index in first 10 pages (typically in first few pages)
-            val indexPages = minOf(10, pdfDoc.numberOfPages)
+            val indexPages = min(10, pdfDoc.numberOfPages)
             var indexText = ""
             
             for (pageNum in 1..indexPages) {
@@ -187,14 +187,18 @@ class NCERTIndexParser @Inject constructor() {
         }
         
         // Save last chapter and topic
-        currentTopic?.let {
-            if (currentChapter != null) {
-                val topics = currentChapter.topics.toMutableList()
+        val finalTopic = currentTopic
+        val finalChapter = currentChapter
+        finalTopic?.let {
+            if (finalChapter != null) {
+                val topics = finalChapter.topics.toMutableList()
                 topics.add(it)
-                currentChapter = currentChapter.copy(topics = topics)
+                val updatedChapter = finalChapter.copy(topics = topics)
+                chapters.add(updatedChapter)
             }
+        } ?: run {
+            finalChapter?.let { chapters.add(it) }
         }
-        currentChapter?.let { chapters.add(it) }
         
         // Update end pages - set each chapter's end page to next chapter's start page
         for (i in chapters.indices) {
@@ -203,7 +207,7 @@ class NCERTIndexParser @Inject constructor() {
             } else {
                 totalPages
             }
-            chapters[i] = chapters[i].copy(endPage = maxOf(chapters[i].startPage, endPage))
+            chapters[i] = chapters[i].copy(endPage = max(chapters[i].startPage, endPage))
             
             // Update topic end pages within chapter
             val updatedTopics = chapters[i].topics.mapIndexed { topicIndex, topic ->
@@ -212,7 +216,7 @@ class NCERTIndexParser @Inject constructor() {
                 } else {
                     chapters[i].endPage
                 }
-                topic.copy(endPage = maxOf(topic.startPage, topicEndPage))
+                topic.copy(endPage = max(topic.startPage, topicEndPage))
             }
             chapters[i] = chapters[i].copy(topics = updatedTopics)
         }

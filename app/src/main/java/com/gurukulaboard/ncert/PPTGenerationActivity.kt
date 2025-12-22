@@ -36,6 +36,9 @@ class PPTGenerationActivity : AppCompatActivity() {
         
         if (bookId != null && chapterName != null) {
             viewModel.loadContent(bookId!!, chapterName!!)
+        } else {
+            Toast.makeText(this, "Missing book ID or chapter name", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
     

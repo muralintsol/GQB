@@ -4,6 +4,7 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.gurukulaboard.ncert.models.NCERTBook
+import com.gurukulaboard.ncert.models.NCERTBookStatus
 import com.gurukulaboard.ncert.models.NCERTIndex
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
@@ -27,7 +28,7 @@ class NCERTRepository @Inject constructor(
         return@withContext try {
             val bookWithTimestamp = book.copy(
                 uploadedAt = book.uploadedAt ?: Timestamp.now(),
-                processedAt = if (book.status == NCERTBook.NCERTBookStatus.INDEXED) Timestamp.now() else null
+                processedAt = if (book.status == NCERTBookStatus.INDEXED) Timestamp.now() else null
             )
             val docRef = firestore.collection(BOOKS_COLLECTION)
                 .add(bookWithTimestamp)

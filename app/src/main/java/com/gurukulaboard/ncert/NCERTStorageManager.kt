@@ -74,11 +74,11 @@ class NCERTStorageManager @Inject constructor(
     /**
      * Get file metadata from Firebase Storage
      */
-    suspend fun getFileMetadata(downloadUrl: String): Result<com.google.firebase.storage.FileMetadata> = withContext(Dispatchers.IO) {
+    suspend fun getFileMetadata(downloadUrl: String): Result<com.google.firebase.storage.StorageMetadata> = withContext(Dispatchers.IO) {
         return@withContext try {
             val storageRef = storage.getReferenceFromUrl(downloadUrl)
             val metadata = storageRef.metadata.await()
-            Result.success(metadata)
+            Result.success(metadata as com.google.firebase.storage.StorageMetadata)
         } catch (e: Exception) {
             Result.failure(e)
         }

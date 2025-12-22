@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gurukulaboard.ncert.models.NCERTBook
+import com.gurukulaboard.ncert.models.NCERTBookStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.File
@@ -69,7 +70,7 @@ class NCERTManagementViewModel @Inject constructor(
                                     val updatedBook = book.copy(
                                         id = bookId,
                                         firebaseStorageUrl = downloadUrl,
-                                        status = NCERTBook.NCERTBookStatus.PROCESSING
+                                        status = NCERTBookStatus.PROCESSING
                                     )
                                     repository.updateBook(bookId, updatedBook)
                                     
@@ -84,7 +85,7 @@ class NCERTManagementViewModel @Inject constructor(
                                             // Update book with index ID and status
                                             val finalBook = updatedBook.copy(
                                                 indexId = indexId,
-                                                status = NCERTBook.NCERTBookStatus.INDEXED,
+                                                status = NCERTBookStatus.INDEXED,
                                                 processedAt = com.google.firebase.Timestamp.now()
                                             )
                                             repository.updateBook(bookId, finalBook)
@@ -137,7 +138,7 @@ class NCERTManagementViewModel @Inject constructor(
                                 indexSaveResult.onSuccess { indexId ->
                                     val updatedBook = book.copy(
                                         indexId = indexId,
-                                        status = NCERTBook.NCERTBookStatus.INDEXED,
+                                        status = NCERTBookStatus.INDEXED,
                                         processedAt = com.google.firebase.Timestamp.now()
                                     )
                                     repository.updateBook(bookId, updatedBook)

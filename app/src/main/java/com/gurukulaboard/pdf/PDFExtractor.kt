@@ -7,8 +7,8 @@ import com.gurukulaboard.pdf.models.ExtractedQuestion
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
 import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor
-import kotlin.math.maxOf
-import kotlin.math.minOf
+import kotlin.math.max
+import kotlin.math.min
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
@@ -126,8 +126,8 @@ class PDFExtractor @Inject constructor() {
             val pdfDoc = PdfDocument(reader)
             
             val textBuilder = StringBuilder()
-            val actualStartPage = maxOf(1, startPage)
-            val actualEndPage = minOf(endPage, pdfDoc.numberOfPages)
+            val actualStartPage = max(1, startPage)
+            val actualEndPage = min(endPage, pdfDoc.numberOfPages)
             
             for (pageNum in actualStartPage..actualEndPage) {
                 val page = pdfDoc.getPage(pageNum)

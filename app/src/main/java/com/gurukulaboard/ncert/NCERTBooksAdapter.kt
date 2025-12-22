@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.gurukulaboard.databinding.ItemNcertBookBinding
 import com.gurukulaboard.ncert.models.NCERTBook
+import com.gurukulaboard.ncert.models.NCERTBookStatus
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -52,7 +53,7 @@ class NCERTBooksAdapter(
                 onProcessClick(book)
             }
             
-            binding.btnProcess.isEnabled = book.status != NCERTBook.NCERTBookStatus.INDEXED
+            binding.btnProcess.isEnabled = book.status != NCERTBookStatus.INDEXED
         }
     }
     

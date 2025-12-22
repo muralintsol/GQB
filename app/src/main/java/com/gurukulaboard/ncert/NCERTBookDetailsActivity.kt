@@ -23,18 +23,21 @@ class NCERTBookDetailsActivity : AppCompatActivity() {
         binding = ActivityNcertBookDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        bookId = intent.getStringExtra("BOOK_ID")
-        if (bookId == null) {
+        val receivedBookId = intent.getStringExtra("BOOK_ID")
+        if (receivedBookId == null || receivedBookId.isEmpty()) {
+            android.widget.Toast.makeText(this, "Book ID not found", android.widget.Toast.LENGTH_SHORT).show()
             finish()
             return
         }
+        
+        bookId = receivedBookId
         
         setupToolbar()
         setupRecyclerView()
         setupObservers()
         setupClickListeners()
         
-        viewModel.loadBookDetails(bookId!!)
+        viewModel.loadBookDetails(receivedBookId)
     }
     
     private fun setupToolbar() {
@@ -71,13 +74,7 @@ class NCERTBookDetailsActivity : AppCompatActivity() {
     }
     
     private fun setupClickListeners() {
-        binding.btnGenerateMCQ.setOnClickListener {
-            // Show selection dialog
-        }
-        
-        binding.btnGeneratePPT.setOnClickListener {
-            // Show selection dialog
-        }
+        // Buttons are handled in adapter - no action needed here
     }
     
     private var bookId: String? = null

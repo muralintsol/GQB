@@ -1,6 +1,7 @@
 package com.gurukulaboard.ncert
 
 import com.gurukulaboard.ncert.models.NCERTBook
+import com.gurukulaboard.ncert.models.NCERTBookStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
@@ -73,7 +74,7 @@ class ZipExtractor @Inject constructor() {
         subjectExtractDir.mkdirs()
         
         ZipArchiveInputStream(FileInputStream(zipFile)).use { zipInputStream ->
-            var entry: ZipArchiveEntry? = zipInputStream.nextEntry
+            var entry: ZipArchiveEntry? = zipInputStream.nextZipEntry
             
             while (entry != null) {
                 if (entry.name.endsWith(".pdf", ignoreCase = true)) {
@@ -94,7 +95,7 @@ class ZipExtractor @Inject constructor() {
                         )
                     )
                 }
-                entry = zipInputStream.nextEntry
+                entry = zipInputStream.nextZipEntry
             }
         }
         
@@ -163,7 +164,7 @@ class ZipExtractor @Inject constructor() {
             fileName = extractedPDF.file.name,
             fileSize = extractedPDF.file.length(),
             localFilePath = extractedPDF.file.absolutePath,
-            status = NCERTBook.NCERTBookStatus.PENDING
+            status = NCERTBookStatus.PENDING
         )
     }
 }

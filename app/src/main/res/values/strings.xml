@@ -46,6 +46,10 @@
     <string name="ncert_books">NCERT Books</string>
     <string name="generate_mcq">Generate MCQ</string>
     <string name="generate_ppt">Generate PPT</string>
+    <string name="saved_papers">Saved Papers</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="share">Share</string>
+    <string name="save_paper">Save Paper</string>
     
     <!-- Common -->
     <string name="save">Save</string>
