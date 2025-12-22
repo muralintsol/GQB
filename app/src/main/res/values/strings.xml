@@ -42,6 +42,11 @@
     <string name="user_management">User Management</string>
     <string name="create_user">Create User</string>
     
+    <!-- NCERT -->
+    <string name="ncert_books">NCERT Books</string>
+    <string name="generate_mcq">Generate MCQ</string>
+    <string name="generate_ppt">Generate PPT</string>
+    
     <!-- Common -->
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

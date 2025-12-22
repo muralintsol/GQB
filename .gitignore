@@ -101,3 +101,7 @@ google-services.json
 
 # Keystore properties
 keystore.properties
+
+# NCERT zip files (large binary files)
+*.zip
+NCERT BOOKS/*.zip

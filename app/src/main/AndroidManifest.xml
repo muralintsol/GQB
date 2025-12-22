@@ -69,6 +69,11 @@
             android:parentActivityName=".paper.PaperGeneratorActivity" />
         
         <activity
+            android:name=".paper.SavedPapersActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        
+        <activity
             android:name=".admin.AdminDashboardActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -77,6 +82,26 @@
             android:name=".admin.UserManagementActivity"
             android:exported="false"
             android:parentActivityName=".admin.AdminDashboardActivity" />
+        
+        <activity
+            android:name=".ncert.NCERTManagementActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        
+        <activity
+            android:name=".ncert.NCERTBookDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".ncert.NCERTManagementActivity" />
+        
+        <activity
+            android:name=".ncert.MCQGenerationActivity"
+            android:exported="false"
+            android:parentActivityName=".ncert.NCERTBookDetailsActivity" />
+        
+        <activity
+            android:name=".ncert.PPTGenerationActivity"
+            android:exported="false"
+            android:parentActivityName=".ncert.NCERTBookDetailsActivity" />
         
     </application>
 

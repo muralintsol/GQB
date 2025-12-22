@@ -58,8 +58,39 @@ interface QuestionDao {
 }
 
 @Singleton
-class OfflineCache @Inject constructor() {
-    // Implement offline caching logic
-    // This will be injected with the database instance when needed
+class OfflineCache @Inject constructor(
+    private val database: OfflineCacheDatabase
+) {
+    private val questionDao: QuestionDao = database.questionDao()
+    
+    suspend fun cacheQuestions(questions: List<com.gurukulaboard.models.Question>) {
+        val entities = questions.map { question ->
+            QuestionEntity.fromQuestion(question)
+        }
+        questionDao.insertQuestions(entities)
+    }
+    
+    suspend fun getCachedQuestions(): List<com.gurukulaboard.models.Question> {
+        val entities = questionDao.getAllQuestions()
+        return entities.map { it.toQuestion() }
+    }
+    
+    suspend fun getCachedQuestionById(questionId: String): com.gurukulaboard.models.Question? {
+        val entity = questionDao.getQuestionById(questionId)
+        return entity?.toQuestion()
+    }
+    
+    suspend fun getCachedQuestionsBySubjectAndClass(subject: String, classLevel: Int): List<com.gurukulaboard.models.Question> {
+        val entities = questionDao.getQuestionsBySubjectAndClass(subject, classLevel)
+        return entities.map { it.toQuestion() }
+    }
+    
+    suspend fun deleteCachedQuestion(questionId: String) {
+        questionDao.deleteQuestion(questionId)
+    }
+    
+    suspend fun clearCache() {
+        questionDao.clearAll()
+    }
 }
 

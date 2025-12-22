@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 5-Step Preparation System</title>
+    <style>
+        @page {
+            size: 6in 8in;
+            margin: 0.3in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            width: 6in;
+            height: 8in;
+            padding: 0.3in;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            background: white;
+            width: 100%;
+            height: 100%;
+            padding: 0.25in;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 0.2in;
+            padding-bottom: 0.15in;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .headline {
+            font-size: 28pt;
+            font-weight: bold;
+            color: #1a1a2e;
+            line-height: 1.2;
+            margin-bottom: 0.1in;
+        }
+        
+        .subtitle {
+            font-size: 14pt;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .steps-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15in;
+            margin: 0.15in 0;
+        }
+        
+        .step-block {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 0.2in;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .step-block:hover {
+            transform: translateX(5px);
+        }
+        
+        .step-number {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.1in;
+            display: flex;
+            align-items: center;
+            gap: 0.1in;
+        }
+        
+        .step-number::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 50%;
+            display: inline-block;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+        
+        .step-block:nth-child(1) .step-number::before { content: '1'; background: #667eea; }
+        .step-block:nth-child(2) .step-number::before { content: '2'; background: #48bb78; }
+        .step-block:nth-child(3) .step-number::before { content: '3'; background: #ed8936; }
+        .step-block:nth-child(4) .step-number::before { content: '4'; background: #e53e3e; }
+        .step-block:nth-child(5) .step-number::before { content: '5'; background: #9f7aea; }
+        
+        .step-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #1a1a2e;
+            margin-bottom: 0.08in;
+        }
+        
+        .step-content {
+            font-size: 11pt;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .step-point {
+            margin: 0.05in 0;
+            padding-left: 0.15in;
+            position: relative;
+        }
+        
+        .step-point::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 0.2in;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 0.15in;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .footer-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 0.08in;
+            color: #fff;
+        }
+        
+        .footer-content {
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+        
+        .footer-highlight {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        
+        .contact-info {
+            margin-top: 0.1in;
+            font-size: 11pt;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="headline">Our 5‑Step System to Reach<br>Government / Low‑Fee Seats</div>
+        </div>
+        
+        <div class="steps-container">
+            <div class="step-block">
+                <div class="step-number">Step 1 – Strong Basics (Class 8–10)</div>
+                <div class="step-content">
+                    <div class="step-point">Clear explanation of every chapter from school syllabus.</div>
+                    <div class="step-point">Focus on understanding, not just memorizing.</div>
+                </div>
+            </div>
+            
+            <div class="step-block">
+                <div class="step-number">Step 2 – Daily Practice Discipline</div>
+                <div class="step-content">
+                    <div class="step-point">Planned daily practice questions and homework.</div>
+                    <div class="step-point">Teacher checks and discusses common mistakes in class.</div>
+                </div>
+            </div>
+            
+            <div class="step-block">
+                <div class="step-number">Step 3 – Structured Revision</div>
+                <div class="step-content">
+                    <div class="step-point">Planned revision after every unit – mind maps, formula sheets, key facts.</div>
+                    <div class="step-point">Unit‑wise tests + re‑teaching where needed.</div>
+                </div>
+            </div>
+            
+            <div class="step-block">
+                <div class="step-number">Step 4 – Exam‑Style Mock Tests</div>
+                <div class="step-content">
+                    <div class="step-point">NEET & JEE style MCQ tests under exam conditions.</div>
+                    <div class="step-point">Descriptive tests for UPSC foundation – writing, comprehension, reasoning.</div>
+                    <div class="step-point">Detailed analysis: speed, accuracy, topics to improve.</div>
+                </div>
+            </div>
+            
+            <div class="step-block">
+                <div class="step-number">Step 5 – Mentorship & Career Planning</div>
+                <div class="step-content">
+                    <div class="step-point">Regular 1‑to‑1 mentoring sessions for goal setting and study plans.</div>
+                    <div class="step-point">Guidance on choosing NEET/JEE/UPSC track and college targets.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-title">Foundation Batches – Class 8, 9, 10</div>
+            <div class="footer-content">
+                <span class="footer-highlight">NEET, JEE, UPSC & Govt Exams</span><br>
+                <strong>Shri Gurukula Academy, Shahpur</strong><br>
+                <span class="contact-info">Call / WhatsApp: 8904094477, 8867837678</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

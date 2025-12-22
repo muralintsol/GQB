@@ -2,9 +2,13 @@ package com.gurukulaboard.pdf
 
 import com.gurukulaboard.models.Difficulty
 import com.gurukulaboard.models.QuestionType
+import com.gurukulaboard.ncert.models.NCERTIndex
 import com.gurukulaboard.pdf.models.ExtractedQuestion
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfReader
+import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor
+import kotlin.math.maxOf
+import kotlin.math.minOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.InputStream
@@ -106,6 +110,41 @@ class PDFExtractor @Inject constructor() {
             options = if (options.isNotEmpty()) options else null,
             pageNumber = pageNumber
         )
+    }
+    
+    /**
+     * Extract text content from specific page range
+     * Used for extracting content from chapters/topics/subtopics
+     */
+    suspend fun extractTextFromPages(
+        pdfInputStream: InputStream,
+        startPage: Int,
+        endPage: Int
+    ): Result<String> = withContext(Dispatchers.IO) {
+        return@withContext try {
+            val reader = PdfReader(pdfInputStream)
+            val pdfDoc = PdfDocument(reader)
+            
+            val textBuilder = StringBuilder()
+            val actualStartPage = maxOf(1, startPage)
+            val actualEndPage = minOf(endPage, pdfDoc.numberOfPages)
+            
+            for (pageNum in actualStartPage..actualEndPage) {
+                val page = pdfDoc.getPage(pageNum)
+                val pageText = com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor.getTextFromPage(page)
+                textBuilder.append(pageText)
+                if (pageNum < actualEndPage) {
+                    textBuilder.append("\n\n")
+                }
+            }
+            
+            pdfDoc.close()
+            reader.close()
+            
+            Result.success(textBuilder.toString())
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }
 

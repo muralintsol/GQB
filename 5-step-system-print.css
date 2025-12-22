@@ -1,0 +1,23 @@
+/* Print-optimized CSS for 6x8 design */
+@page {
+    size: 6in 8in;
+    margin: 0.2in;
+}
+
+@media print {
+    body {
+        background: white !important;
+        width: 6in;
+        height: 8in;
+    }
+    
+    .container {
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    
+    .step-block {
+        page-break-inside: avoid;
+    }
+}
+

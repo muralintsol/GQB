@@ -113,9 +113,10 @@ class PaperGeneratorActivity : AppCompatActivity() {
     
     private fun openPreview(questions: List<Question>) {
         val intent = Intent(this, PaperPreviewActivity::class.java)
-        val questionIds = questions.map { it.id }.toTypedArray()
-        intent.putExtra("QUESTION_IDS", questionIds)
-        intent.putExtra("EXAM_TYPE", selectedExamType.name)
+        intent.putExtra("EXAM_TYPE", selectedExamType)
+        intent.putExtra("SUBJECT", binding.etSubject.text.toString().trim())
+        intent.putExtra("CLASS_LEVEL", binding.etClass.text.toString().toIntOrNull() ?: 11)
+        intent.putExtra("TOTAL_MARKS", binding.etTotalMarks.text.toString().toIntOrNull() ?: 100)
         startActivity(intent)
     }
     

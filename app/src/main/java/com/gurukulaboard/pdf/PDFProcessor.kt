@@ -54,5 +54,23 @@ class PDFProcessor @Inject constructor(
             Result.failure(e)
         }
     }
+    
+    /**
+     * Upload NCERT PDF file to Firebase Storage
+     */
+    suspend fun uploadNCERTPDF(file: java.io.File, subject: String, classLevel: Int): Result<String> = withContext(Dispatchers.IO) {
+        return@withContext try {
+            val fileName = file.name
+            val storagePath = "ncert/${subject.lowercase()}/$classLevel/$fileName"
+            val storageRef = storage.reference.child(storagePath)
+            
+            val uploadTask = storageRef.putFile(android.net.Uri.fromFile(file)).await()
+            val downloadUrl = uploadTask.storage.downloadUrl.await().toString()
+            
+            Result.success(downloadUrl)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }
 

@@ -12,7 +12,9 @@ import com.gurukulaboard.auth.SessionManager
 import com.gurukulaboard.databinding.ActivityMainBinding
 import com.gurukulaboard.models.UserRole
 import com.gurukulaboard.pdf.PDFUploadActivity
+import com.gurukulaboard.ncert.NCERTManagementActivity
 import com.gurukulaboard.paper.PaperGeneratorActivity
+import com.gurukulaboard.paper.SavedPapersActivity
 import com.gurukulaboard.questionbank.QuestionBankActivity
 import com.gurukulaboard.scraping.ScrapingActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,6 +78,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, PaperGeneratorActivity::class.java))
         }
         
+        // NCERT Books
+        binding.cardNCERT.setOnClickListener {
+            startActivity(Intent(this, NCERTManagementActivity::class.java))
+        }
+        
         // Admin Dashboard
         binding.cardAdminDashboard.setOnClickListener {
             startActivity(Intent(this, AdminDashboardActivity::class.java))
@@ -113,6 +120,10 @@ class MainActivity : AppCompatActivity() {
     
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.menu_saved_papers -> {
+                startActivity(Intent(this, SavedPapersActivity::class.java))
+                true
+            }
             R.id.menu_logout -> {
                 showLogoutDialog()
                 true

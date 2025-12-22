@@ -3,10 +3,14 @@ package com.gurukulaboard.export
 import android.content.Context
 import com.gurukulaboard.models.HeaderFooterConfig
 import com.gurukulaboard.models.Question
+import com.itextpdf.kernel.colors.ColorConstants
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
 import com.itextpdf.layout.element.Paragraph
+import com.itextpdf.layout.element.Text
+import com.itextpdf.layout.properties.TextAlignment
+import com.itextpdf.layout.properties.UnitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -28,33 +32,59 @@ class PDFExporter @Inject constructor() {
             val pdf = PdfDocument(writer)
             val document = Document(pdf)
             
-            // Add header
+            // Add header with better formatting
             if (headerFooter.schoolName.isNotBlank()) {
-                document.add(Paragraph(headerFooter.schoolName))
-            }
-            if (headerFooter.date.isNotBlank()) {
-                document.add(Paragraph(headerFooter.date))
-            }
-            if (headerFooter.subject.isNotBlank()) {
-                document.add(Paragraph("Subject: ${headerFooter.subject}"))
+                val schoolName = Paragraph(headerFooter.schoolName)
+                    .setFontSize(18f)
+                    .setBold()
+                    .setTextAlignment(TextAlignment.CENTER)
+                document.add(schoolName)
             }
             
-            document.add(Paragraph("\n"))
+            if (headerFooter.date.isNotBlank() || headerFooter.subject.isNotBlank() || headerFooter.classLevel.isNotBlank()) {
+                val headerInfo = Paragraph()
+                if (headerFooter.date.isNotBlank()) {
+                    headerInfo.add(Text("Date: ${headerFooter.date}\n"))
+                }
+                if (headerFooter.subject.isNotBlank()) {
+                    headerInfo.add(Text("Subject: ${headerFooter.subject}\n"))
+                }
+                if (headerFooter.classLevel.isNotBlank()) {
+                    headerInfo.add(Text("Class: ${headerFooter.classLevel}\n"))
+                }
+                headerInfo.setTextAlignment(TextAlignment.CENTER)
+                document.add(headerInfo)
+            }
             
-            // Add questions in compact mode
+            document.add(Paragraph("\n").setMarginBottom(20f))
+            
+            // Add questions with better formatting
             questions.forEachIndexed { index, question ->
-                document.add(Paragraph("${index + 1}. ${question.content}"))
+                val questionText = Paragraph("${index + 1}. ${question.content}")
+                    .setFontSize(12f)
+                    .setMarginBottom(8f)
+                document.add(questionText)
                 
                 question.options?.forEachIndexed { optIndex, option ->
-                    document.add(Paragraph("   ${('a' + optIndex)}. $option"))
+                    val optionText = Paragraph("   ${('a' + optIndex)}. $option")
+                        .setFontSize(11f)
+                        .setMarginLeft(20f)
+                        .setMarginBottom(4f)
+                    document.add(optionText)
                 }
                 
-                document.add(Paragraph("\n"))
+                // Add space between questions
+                document.add(Paragraph("\n").setMarginBottom(10f))
             }
             
             // Add footer
+            document.add(Paragraph("\n").setMarginTop(20f))
             if (headerFooter.examType.isNotBlank()) {
-                document.add(Paragraph("\n${headerFooter.examType}"))
+                val footer = Paragraph("Exam Type: ${headerFooter.examType}")
+                    .setFontSize(10f)
+                    .setTextAlignment(TextAlignment.CENTER)
+                    .setItalic()
+                document.add(footer)
             }
             
             document.close()

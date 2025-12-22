@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/menu_export_pdf"
+        android:title="Export PDF"
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/menu_export_answer_key"
+        android:title="Answer Key"
+        app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/menu_print"
+        android:title="Print"
+        app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/menu_share"
+        android:title="Share"
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/menu_save"
+        android:title="Save"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="ifRoom" />
+    
+</menu>
+
