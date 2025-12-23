@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ncert.MCQGenerationActivity">
+    tools:context=".content.MCQGenerationActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,64 +19,96 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="@dimen/padding_medium">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
+            <!-- Generation Options -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Number of Questions">
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/margin_medium">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNumberOfQuestions"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:text="5" />
+                    android:layout_weight="1"
+                    android:text="@string/number_of_questions"
+                    android:textSize="@dimen/text_size_medium"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/margin_small" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <Spinner
+                    android:id="@+id/spinnerQuestionCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/margin_small" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/difficulty"
+                    android:textSize="@dimen/text_size_medium"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/margin_small" />
+
+                <Spinner
+                    android:id="@+id/spinnerDifficulty"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGenerate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/generate_mcq"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <TextView
+                android:id="@+id/tvGeneratedCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:visibility="gone" />
+
+            <!-- Generated MCQs -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMCQs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:enabled="false" />
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Generate" />
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewMCQs"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="@dimen/padding_medium" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSaveAll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_medium"
-            android:text="Save All to Question Bank" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />
-
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

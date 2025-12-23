@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
     id 'com.google.gms.google-services'
 }
@@ -35,7 +36,15 @@ android {
             if (keystorePropertiesFile.exists()) {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'])
+                def storeFilePath = keystoreProperties['storeFile']
+                // Handle both absolute and relative paths
+                if (storeFilePath.contains(':') || storeFilePath.startsWith('/')) {
+                    // Absolute path (Windows or Unix)
+                    storeFile file(storeFilePath)
+                } else {
+                    // Relative path from project root
+                    storeFile rootProject.file(storeFilePath)
+                }
                 storePassword keystoreProperties['storePassword']
             }
         }

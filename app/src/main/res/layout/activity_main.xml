@@ -211,6 +211,40 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Teacher Content Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardTeacherContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_medium"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/teacher_content"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_menu_agenda"
+                        android:tint="?attr/colorPrimary" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Admin Dashboard Card (Only for Admin/Super Admin) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAdminDashboard"

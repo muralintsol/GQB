@@ -103,6 +103,48 @@
             android:exported="false"
             android:parentActivityName=".ncert.NCERTBookDetailsActivity" />
         
+        <activity
+            android:name=".content.ContentDashboardActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        
+        <activity
+            android:name=".content.ContentUploadActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDashboardActivity" />
+        
+        <activity
+            android:name=".content.ContentDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDashboardActivity" />
+        
+        <activity
+            android:name=".content.MCQGenerationActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDetailActivity" />
+        
+        <activity
+            android:name=".content.MCQDisplayActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDetailActivity"
+            android:screenOrientation="landscape" />
+        
+        <activity
+            android:name=".content.PPTEditorActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDetailActivity" />
+        
+        <activity
+            android:name=".content.PPTViewerActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDetailActivity"
+            android:screenOrientation="landscape" />
+        
+        <activity
+            android:name=".content.ContentSelectionActivity"
+            android:exported="false"
+            android:parentActivityName=".content.ContentDetailActivity" />
+        
     </application>
 
 </manifest>

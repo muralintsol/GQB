@@ -45,7 +45,7 @@
     <!-- NCERT -->
     <string name="ncert_books">NCERT Books</string>
     <string name="generate_mcq">Generate MCQ</string>
-    <string name="generate_ppt">Generate PPT</string>
+    <string name="generate_mcqs">Generate MCQs</string>
     <string name="saved_papers">Saved Papers</string>
     <string name="export_pdf">Export PDF</string>
     <string name="share">Share</string>
@@ -59,5 +59,74 @@
     <string name="loading">Loading...</string>
     <string name="error">Error</string>
     <string name="success">Success</string>
+    
+    <!-- Teacher Content -->
+    <string name="teacher_content">Teacher Content</string>
+    <string name="upload_content">Upload Content</string>
+    <string name="content_details">Content Details</string>
+    <string name="no_content_available">No content available</string>
+    <string name="please_select_file">Please select a file</string>
+    <string name="title_required">Title is required</string>
+    <string name="upload_success">Content uploaded successfully</string>
+    <string name="upload_failed">Upload failed</string>
+    <string name="change_file">Change File</string>
+    <string name="select_file">Select PDF File</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="subject">Subject</string>
+    <string name="class_level">Class</string>
+    <string name="chapter">Chapter</string>
+    <string name="content_type">Content Type</string>
+    <string name="tags">Tags</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="download">Download</string>
+    <string name="favorite">Favorite</string>
+    <string name="content_type_notes">Notes</string>
+    <string name="content_type_worksheet">Worksheet</string>
+    <string name="content_type_presentation">Presentation</string>
+    <string name="content_type_lesson_plan">Lesson Plan</string>
+    <string name="content_type_reference">Reference</string>
+    <string name="content_type_other">Other</string>
+    
+    <!-- MCQ Generation -->
+    <string name="view_mcqs">View MCQs</string>
+    <string name="qa_session">Q&amp;A Session</string>
+    <string name="reveal_answer">Reveal Answer</string>
+    <string name="full_screen">Full Screen</string>
+    <string name="exit_full_screen">Exit Full Screen</string>
+    <string name="number_of_questions">Number of Questions</string>
+    <string name="difficulty">Difficulty</string>
+    
+    <!-- PPT Generation -->
+    <string name="generate_ppt">Generate PPT</string>
+    <string name="view_ppt">View PPT</string>
+    <string name="edit_ppt">Edit PPT</string>
+    <string name="presentation">Presentation</string>
+    <string name="add_slide">Add Slide</string>
+    <string name="save_slide">Save Slide</string>
+    <string name="slide_title">Slide Title</string>
+    <string name="slide_content">Slide Content</string>
+    <string name="slide_type">Slide Type</string>
+    <string name="saved_successfully">Saved successfully</string>
+    
+    <!-- Content Selection -->
+    <string name="select_sections">Select Sections</string>
+    <string name="all">All</string>
+    <string name="subtopics">Subtopics</string>
+    <string name="exercises">Exercises</string>
+    <string name="selected_count">Selected: %d</string>
+    <string name="select_all">Select All</string>
+    <string name="deselect_all">Deselect All</string>
+    <string name="please_select_sections">Please select at least one section</string>
+    <string name="no_sections_detected">No sections detected in this PDF. You can generate PPT from entire content.</string>
+    <string name="failed_to_analyze_pdf">Failed to analyze PDF. Please try again.</string>
+    
+    <!-- PDF Analysis Caching -->
+    <string name="analyzing_pdf_structure">Analyzing PDF structure...</string>
+    <string name="analyzing_pdf">Analyzing PDF...</string>
+    <string name="re_analyzing_pdf">Re-analyzing PDF...</string>
+    <string name="re_analyze_pdf">Re-analyze PDF</string>
+    <string name="re_analysis_complete">PDF re-analyzed successfully</string>
+    <string name="loaded_from_cache">Loaded from cache</string>
 </resources>
 

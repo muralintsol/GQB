@@ -17,6 +17,7 @@ import com.gurukulaboard.paper.PaperGeneratorActivity
 import com.gurukulaboard.paper.SavedPapersActivity
 import com.gurukulaboard.questionbank.QuestionBankActivity
 import com.gurukulaboard.scraping.ScrapingActivity
+import com.gurukulaboard.content.ContentDashboardActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -81,6 +82,11 @@ class MainActivity : AppCompatActivity() {
         // NCERT Books
         binding.cardNCERT.setOnClickListener {
             startActivity(Intent(this, NCERTManagementActivity::class.java))
+        }
+        
+        // Teacher Content
+        binding.cardTeacherContent.setOnClickListener {
+            startActivity(Intent(this, ContentDashboardActivity::class.java))
         }
         
         // Admin Dashboard

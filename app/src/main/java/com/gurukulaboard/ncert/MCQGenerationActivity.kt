@@ -80,11 +80,11 @@ class MCQGenerationActivity : AppCompatActivity() {
     
     private fun setupClickListeners() {
         binding.btnGenerate.setOnClickListener {
-            val numberOfQuestions = binding.etNumberOfQuestions.text.toString().toIntOrNull() ?: 5
+            val numberOfQuestions = binding.spinnerQuestionCount.selectedItem.toString().toIntOrNull() ?: 5
             viewModel.generateMCQs(numberOfQuestions)
         }
         
-        binding.btnSaveAll.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             saveAllMCQs()
         }
     }
