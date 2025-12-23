@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.Gson
 import com.gurukulaboard.sync.OfflineCacheDatabase
+import com.gurukulaboard.sync.QuestionDao
 import com.gurukulaboard.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -41,6 +43,18 @@ object AppModule {
     @Singleton
     fun provideOfflineCacheDatabase(@ApplicationContext context: Context): OfflineCacheDatabase {
         return OfflineCacheDatabase.getDatabase(context)
+    }
+    
+    @Provides
+    @Singleton
+    fun provideQuestionDao(database: OfflineCacheDatabase): QuestionDao {
+        return database.questionDao()
+    }
+    
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
     }
 }
 

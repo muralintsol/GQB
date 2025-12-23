@@ -59,9 +59,8 @@ interface QuestionDao {
 
 @Singleton
 class OfflineCache @Inject constructor(
-    private val database: OfflineCacheDatabase
+    private val questionDao: QuestionDao
 ) {
-    private val questionDao: QuestionDao = database.questionDao()
     
     suspend fun cacheQuestions(questions: List<com.gurukulaboard.models.Question>) {
         val entities = questions.map { question ->
